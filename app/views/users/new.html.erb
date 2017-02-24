@@ -1,15 +1,27 @@
 <div id="clearance" class="sign-up">
-  <h2><%= t(".title") %></h2>
+  <%= form_for @user, html: { class: "form-signin" } do |form| %>
+    <h2 class="form-signin-heading">Sign Up</h2>
 
-  <%= form_for @user do |form| %>
-    <%= render partial: '/users/form', object: form %>
-
-    <div class="submit-field">
-      <%= form.submit %>
+    <div class="text-field">
+      <%= form.label :email, class: "sr-only" %>
+      <%= form.text_field :email,
+        type: 'email',
+        placeholder: "Email address",
+        required: true,
+        autofocus: true,
+        class: "form-control" %>
     </div>
 
-    <div class="other-links">
-      <%= link_to t(".sign_in"), sign_in_path %>
+    <div class="password-field">
+      <%= form.label :password, class: "sr-only" %>
+      <%= form.password_field :password,
+        placeholder: "Password",
+        required: true,
+        class: "form-control" %>
+    </div>
+
+    <div class="submit-field">
+      <%= form.submit "Sign Up", class: "btn btn-lg btn-primary btn-block" %>
     </div>
   <% end %>
 </div>

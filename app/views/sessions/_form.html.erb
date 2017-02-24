@@ -1,22 +1,32 @@
-<%= form_for :session, url: session_path do |form| %>
+<%= form_for :session, url: session_path, html: { class: "form-signin" } do |form| %>
+  <h2 class="form-signin-heading">Sign In</h2>
+
   <div class="text-field">
-    <%= form.label :email %>
-    <%= form.text_field :email, type: 'email' %>
+    <%= form.label :email, class: "sr-only" %>
+    <%= form.text_field :email,
+      type: 'email',
+      placeholder: "Email address",
+      required: true,
+      autofocus: true,
+      class: "form-control" %>
   </div>
 
   <div class="password-field">
-    <%= form.label :password %>
-    <%= form.password_field :password %>
+    <%= form.label :password, class: "sr-only" %>
+    <%= form.password_field :password,
+      placeholder: "Password",
+      required: true,
+      class: "form-control" %>
   </div>
 
   <div class="submit-field">
-    <%= form.submit %>
+    <%= form.submit "Sign In", class: "btn btn-lg btn-primary btn-block" %>
   </div>
 
   <div class="other-links">
-    <% if Clearance.configuration.allow_sign_up? %>
-      <%= link_to t(".sign_up"), sign_up_path %>
-    <% end %>
-    <%= link_to t(".forgot_password"), new_password_path %>
+    <br/>
+    <p class="pull-right">
+      <%= link_to t(".forgot_password"), new_password_path %>
+    </p>
   </div>
 <% end %>

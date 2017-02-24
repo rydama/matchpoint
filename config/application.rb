@@ -21,5 +21,11 @@ module Matchpoint
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+
+    config.after_initialize do
+      Clearance::PasswordsController.layout "no_nav"
+      Clearance::SessionsController.layout "no_nav"
+      Clearance::UsersController.layout "no_nav"
+    end
   end
 end
