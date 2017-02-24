@@ -47,12 +47,21 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Matchpoint</a>
+        <a class="navbar-brand" href="<%= root_path %>">Matchpoint</a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
-            <li><%= link_to "Link1", "/path1"  %></li>
-            <li><%= link_to "Link2", "/path2"  %></li>
-            <li><%= link_to "Link3", "/path3"  %></li>
+            <% if signed_in? %>
+              <li><%= link_to "Home", home_path  %></li>
+              <li><%= link_to "Host My Own Tournament", "/path2"  %></li>
+            <% end %>
+          </ul>
+          <ul class="nav navbar-nav pull-right">
+            <% if signed_in? %>
+              <li><%= link_to "Sign Out", sign_out_path, method: :delete  %></li>
+            <% else %>
+              <li><%= link_to "Sign In", sign_in_path  %></li>
+              <li><%= link_to "Sign Up", sign_up_path  %></li>
+            <% end %>
           </ul>
         </div>
       </div>
