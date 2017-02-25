@@ -4,14 +4,12 @@ jQuery ->
 
   $(startAtDatePicker).datetimepicker(
     showClose: true
-    ignoreReadonly: true
     minDate: new Date()
   )
 
   $(endAtDatePicker).datetimepicker(
     useCurrent: false
     showClose: true
-    ignoreReadonly: true
     minDate: new Date()
   )
 
