@@ -23,7 +23,7 @@ in the dev environment (Matchpoint isn't deployed for production yet).
 - Matchpoint is built with Rails 5.0.1
 - `git clone git@github.com:rydama/matchpoint.git matchpoint`
 - `bundle install`
-- `bin/rails db:seeds`
+-  If you want to seed some sample data, `bin/rails db:seeds`
 - `bin/rails s`
 - Visit http://localhost:3000
 
