@@ -25,17 +25,17 @@ en:
         password: Choose password
     submit:
       password:
-        submit: Reset password
+        submit: Reset Password
       password_reset:
         submit: Save this password
       session:
-        submit: Sign in
+        submit: Sign In
       user:
-        create: Sign up
+        create: Sign Up
   layouts:
     application:
-      sign_in: Sign in
-      sign_out: Sign out
+      sign_in: Sign In
+      sign_out: Sign Out
   passwords:
     create:
       description: You will receive an email within the next few minutes. It
@@ -50,7 +50,7 @@ en:
   sessions:
     form:
       forgot_password: Forgot password?
-      sign_up: Sign up
+      sign_up: Sign Up
     new:
       title: Sign in
   users:
