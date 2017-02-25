@@ -1,4 +1,6 @@
 class TournamentsController < ApplicationController
+  before_action :require_login
+
   def show
     @tournament = Tournament.find(params[:id])
   end
@@ -9,6 +11,7 @@ class TournamentsController < ApplicationController
 
   def create
     @tournament = Tournament.new(tournament_params)
+    @tournament.owner = current_user
     if @tournament.save
       flash[:notice] = "Your tournament was created."
       redirect_to @tournament
