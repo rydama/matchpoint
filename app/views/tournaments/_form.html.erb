@@ -22,6 +22,7 @@
     <%= form.label :start_at, "Starts" %>
     <div class="input-group date" data-start-at>
       <%= form.text_field :start_at,
+        value: @tournament.start_at.try(:strftime, "%B %e %Y, %l:%M %P"),
         required: true,
         class: "form-control" %>
       <span class="input-group-addon">
@@ -34,6 +35,7 @@
     <%= form.label :end_at, "Ends" %>
     <div class="input-group date" data-end-at>
       <%= form.text_field :end_at,
+        value: @tournament.end_at.try(:strftime, "%B %e %Y, %l:%M %P"),
         required: true,
         class: "form-control" %>
       <span class="input-group-addon">
