@@ -16,7 +16,7 @@ class TournamentsController < ApplicationController
       flash[:notice] = "Your tournament was created."
       redirect_to @tournament
     else
-      flash.now[:alert] = "There was a problem saving the tournament. #{first_error(@tournament)}."
+      flash.now[:alert] = "There was a problem saving the tournament. #{first_model_error(@tournament)}."
       render "new"
     end
   end
@@ -26,7 +26,7 @@ class TournamentsController < ApplicationController
       flash[:notice] = "Your tournament was updated."
       redirect_to @tournament
     else
-      flash.now[:alert] = "There was a problem updating the tournament. #{first_error(@tournament)}."
+      flash.now[:alert] = "There was a problem updating the tournament. #{first_model_error(@tournament)}."
       render "edit"
     end
   end
