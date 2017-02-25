@@ -1,4 +1,4 @@
-<%= form_for @tournament do |form| %>
+<%= form_for @tournament, html: { "data-tournament-form": "" } do |form| %>
 
   <div class="text-field">
     <%= form.label :name %>
@@ -20,18 +20,28 @@
 
   <div class="text-field top20">
     <%= form.label :start_at, "Starts" %>
-    <%= form.text_field :start_at,
-      placeholder: "example: 03/08/2017 8:00 AM",
-      required: true,
-      class: "form-control" %>
+    <div class="input-group date" data-start-at>
+      <%= form.text_field :start_at,
+        required: true,
+        readonly: true,
+        class: "form-control" %>
+      <span class="input-group-addon">
+        <span class="glyphicon glyphicon-calendar"></span>
+      </span>
+    </div>
   </div>
 
   <div class="text-field top20">
     <%= form.label :end_at, "Ends" %>
-    <%= form.text_field :end_at,
-      placeholder: "example: 03/11/2017 5:00 PM",
-      required: true,
-      class: "form-control" %>
+    <div class="input-group date" data-end-at>
+      <%= form.text_field :end_at,
+        required: true,
+        readonly: true,
+        class: "form-control" %>
+      <span class="input-group-addon">
+        <span class="glyphicon glyphicon-calendar"></span>
+      </span>
+    </div>
   </div>
 
   <div class="submit-field">
