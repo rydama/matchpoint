@@ -6,4 +6,6 @@ class Tournament < ApplicationRecord
   validates :start_at, presence: { message: "is blank or invalid" }
   validates :end_at, presence: { message: "is blank or invalid" }
   validates :owner, presence: true
+
+  scope :future, -> { where("start_at >= ?", DateTime.now) }
 end

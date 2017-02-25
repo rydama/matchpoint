@@ -1,3 +1,7 @@
-<div>
-Home
-</div>
+<h2>My Tournaments</h2>
+
+<% @my_tournaments.each do |tournament| %>
+  <p><%= tournament.name %></p>
+<% end %>
+
+<h2>Upcoming Tournaments</h2>
