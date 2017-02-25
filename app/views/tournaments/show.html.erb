@@ -1,7 +1,7 @@
 <div class="col-md-6">
   <h2><%= @tournament.name %></h2>
 
-  <h5><%= "#{@tournament.start_at.to_formatted_s(:long)} - #{@tournament.end_at.to_formatted_s(:long)}" %></h5>
+  <h5><%= tournament_date_label(@tournament) %></h5>
 
   <p>
     <%= @tournament.description %>

@@ -6,4 +6,8 @@ module TournamentsHelper
       "Save Tournament"
     end
   end
+
+  def tournament_date_label(tournament)
+    "#{tournament.start_at.to_formatted_s(:long)} - #{tournament.end_at.to_formatted_s(:long)}"
+  end
 end

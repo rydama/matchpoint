@@ -1,4 +1,54 @@
-<h2>Playing In</h2>
-<h2>Hosting</h2>
-<h2>Past Tournaments</h2>
-(that I was in or hosted)
+<div class="col-md-12">
+  <% if current_user.tournaments_playing_in.any? %>
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Tournament's I'm Playing In</h3>
+      </div>
+      <div class="panel-body">
+        <%= render partial: "tournament_table",
+          locals: { tournaments: current_user.tournaments_playing_in.order(:start_at) }
+        %>
+      </div>
+    </div>
+  <% end %>
+
+  <% if current_user.tournaments.current_and_upcoming.any? %>
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <h3 class="panel-title">Tournament's I'm Hosting</h3>
+      </div>
+      <div class="panel-body">
+        <%= render partial: "tournament_table",
+          locals: { tournaments: current_user.tournaments.current_and_upcoming.order(:start_at) }
+        %>
+      </div>
+    </div>
+  <% end %>
+
+  <% if current_user.tournaments_not_playing_in.any? %>
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">Upcoming Tournaments</h3>
+      </div>
+      <div class="panel-body">
+        <p>Register for one of these upcoming tournaments</p>
+        <%= render partial: "tournament_table",
+          locals: { tournaments: current_user.tournaments_not_playing_in.order(:start_at) }
+        %>
+      </div>
+    </div>
+  <% end %>
+
+  <% if current_user.tournaments_played_in_or_hosted.any? %>
+    <div class="panel panel-warning">
+      <div class="panel-heading">
+        <h3 class="panel-title">Past Tournaments</h3>
+      </div>
+      <div class="panel-body">
+        <%= render partial: "tournament_table",
+          locals: { tournaments: current_user.tournaments_played_in_or_hosted.order(start_at: :desc) }
+        %>
+      </div>
+    </div>
+  <% end %>
+</div>

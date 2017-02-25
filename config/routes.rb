@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root to: "welcome#index"
-  get "/home", to: "home#index"
+  get "/home", to: "tournaments#index"
 
   resources :tournaments
 

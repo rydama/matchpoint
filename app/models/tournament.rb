@@ -7,7 +7,8 @@ class Tournament < ApplicationRecord
   validates :end_at, presence: { message: "is blank or invalid" }
   validates :owner, presence: true
 
-  scope :future, -> { where("start_at >= ?", DateTime.now) }
+  scope :current_and_upcoming, -> { where("end_at >= ?", DateTime.now) }
+  scope :past, -> { where("end_at < ?", DateTime.now) }
 
   def owned_by(user)
     user == owner
