@@ -1,9 +1,6 @@
 class TournamentsController < ApplicationController
   before_action :require_login
-
-  def show
-    @tournament = Tournament.find(params[:id])
-  end
+  before_action :load_tournament, except: [:new, :create]
 
   def new
     @tournament = Tournament.new
@@ -21,7 +18,21 @@ class TournamentsController < ApplicationController
     end
   end
 
+  def update
+    if @tournament.update_attributes(tournament_params)
+      flash[:notice] = "Your tournament was updated."
+      redirect_to @tournament
+    else
+      flash.now[:alert] = "There was a problem updating the tournament. #{first_error(@tournament)}"
+      render "edit"
+    end
+  end
+
   private
+
+  def load_tournament
+    @tournament = Tournament.find(params[:id])
+  end
 
   def tournament_params
     params.require(:tournament).permit(:name, :description, :start_at, :end_at)

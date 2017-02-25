@@ -13,6 +13,7 @@ feature "User creates tournament" do
 
     click_button "Create Tournament"
     expect(page).to have_content("Your tournament was created")
+    expect(page).to have_content("Portland Classic")
   end
 
   scenario "With invalid dates" do

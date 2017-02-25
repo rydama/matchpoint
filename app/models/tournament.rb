@@ -8,4 +8,8 @@ class Tournament < ApplicationRecord
   validates :owner, presence: true
 
   scope :future, -> { where("start_at >= ?", DateTime.now) }
+
+  def owned_by(user)
+    user == owner
+  end
 end

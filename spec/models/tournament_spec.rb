@@ -1,5 +1,6 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe Tournament, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Tournament, type: :model do
+  describe "#owned_by" do
+  end
 end

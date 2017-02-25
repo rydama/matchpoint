@@ -1,0 +1,41 @@
+<%= form_for @tournament do |form| %>
+
+
+  <div class="text-field">
+    <%= form.label :name %>
+    <%= form.text_field :name,
+      placeholder: "example: Portland Classic",
+      required: true,
+      autofocus: true,
+      class: "form-control" %>
+  </div>
+
+  <div class="text-field top20">
+    <%= form.label :description %>
+    <%= form.text_area :description,
+      rows: 5,
+      placeholder: "Describe the tournament details, such as location, special rules, etc",
+      required: true,
+      class: "form-control noresize" %>
+  </div>
+
+  <div class="text-field top20">
+    <%= form.label :start_at, "Starts" %>
+    <%= form.text_field :start_at,
+      placeholder: "example: 03/08/2017 8:00 AM",
+      required: true,
+      class: "form-control" %>
+  </div>
+
+  <div class="text-field top20">
+    <%= form.label :end_at, "Ends" %>
+    <%= form.text_field :end_at,
+      placeholder: "example: 03/11/2017 5:00 PM",
+      required: true,
+      class: "form-control" %>
+  </div>
+
+  <div class="submit-field">
+    <%= form.submit tournament_submit_label(@tournament), class: "btn btn-md btn-primary top20" %>
+  </div>
+<% end %>
