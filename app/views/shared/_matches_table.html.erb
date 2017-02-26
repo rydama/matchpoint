@@ -1,0 +1,19 @@
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th>Home Player</th>
+      <th>Away Player</th>
+      <th>Match Start</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @matches.each do |match| %>
+      <tr>
+        <td><%= match.home_player.email %></td>
+        <td><%= match.away_player.email %></td>
+        <td><%= match.start_at.strftime('%B %d %Y, %l:%M %P') %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

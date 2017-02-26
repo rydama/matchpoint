@@ -2,7 +2,14 @@ Rails.application.routes.draw do
   root to: "welcome#index"
   get "/home", to: "tournaments#index"
 
-  resources :tournaments
+  resources :tournaments do
+    resources :matches do
+      collection do
+        post :generate
+      end
+    end
+  end
+
   resources :registrations, only: [:create, :destroy]
 
   # Clearance user management

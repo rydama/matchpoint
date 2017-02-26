@@ -2,6 +2,7 @@ class Tournament < ApplicationRecord
   belongs_to :owner, class_name: "User"
   has_many :registrations
   has_many :players, through: :registrations, source: :user
+  has_many :matches
 
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true

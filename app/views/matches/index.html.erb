@@ -1,0 +1,16 @@
+<div class="col-md-9">
+  <h4>
+  Matches for <%= link_to @tournament.name, tournament_path(@tournament) %>
+  </h4>
+
+  <% if @tournament.matches.empty? %>
+    <p>Matches haven't been generated yet for this tournament.</p>
+
+    <% if @tournament.hosted_by?(current_user) %>
+      <%= link_to "Generate Matches", generate_tournament_matches_path(@tournament),
+        class: "btn btn-md btn-warning top20"  %>
+    <% end %>
+  <% else %>
+    <%= render partial: "shared/matches_table", locals: { tournament: @tournament } %>
+  <% end %>
+</div>

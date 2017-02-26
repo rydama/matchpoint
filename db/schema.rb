@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170225232847) do
+ActiveRecord::Schema.define(version: 20170226211832) do
+
+  create_table "matches", force: :cascade do |t|
+    t.datetime "start_at"
+    t.integer  "tournament_id"
+    t.integer  "home_player_id"
+    t.integer  "away_player_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["away_player_id"], name: "index_matches_on_away_player_id"
+    t.index ["home_player_id"], name: "index_matches_on_home_player_id"
+    t.index ["tournament_id"], name: "index_matches_on_tournament_id"
+  end
 
   create_table "registrations", force: :cascade do |t|
     t.integer  "user_id"
