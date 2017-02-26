@@ -7,33 +7,36 @@
     <%= link_to "Host a Tournament", new_tournament_path, class: "btn btn-md btn-primary top20"  %>
   <% end %>
 
-  <% if current_user.tournaments_playing_in.current_and_upcoming.any? %>
+  <% playing_tournaments = current_user.tournaments_playing_in.upcoming.order(:start_at) %>
+  <% if playing_tournaments.any? %>
     <div class="panel panel-primary">
       <div class="panel-heading">
         <h3 class="panel-title">Tournaments I'm Playing In</h3>
       </div>
       <div class="panel-body">
         <%= render partial: "tournament_table",
-          locals: { tournaments: current_user.tournaments_playing_in.current_and_upcoming.order(:start_at) }
+          locals: { tournaments: playing_tournaments }
         %>
       </div>
     </div>
   <% end %>
 
-  <% if current_user.tournaments_hosting.current_and_upcoming.any? %>
+  <% hosting_tournaments =  current_user.tournaments_hosting.upcoming.order(:start_at) %>
+  <% if hosting_tournaments.any? %>
     <div class="panel panel-info">
       <div class="panel-heading">
         <h3 class="panel-title">Tournaments I'm Hosting</h3>
       </div>
       <div class="panel-body">
         <%= render partial: "tournament_table",
-          locals: { tournaments: current_user.tournaments_hosting.current_and_upcoming.order(:start_at) }
+          locals: { tournaments: hosting_tournaments }
         %>
       </div>
     </div>
   <% end %>
 
-  <% if current_user.tournaments_not_playing_in.any? %>
+  <% upcoming_tournaments = current_user.tournaments_not_playing_in.order(:start_at) %>
+  <% if upcoming_tournaments.any? %>
     <div class="panel panel-info">
       <div class="panel-heading">
         <h3 class="panel-title">Upcoming Tournaments</h3>
@@ -41,20 +44,21 @@
       <div class="panel-body">
         <p>Register for one of these upcoming tournaments</p>
         <%= render partial: "tournament_table",
-          locals: { tournaments: current_user.tournaments_not_playing_in.order(:start_at) }
+          locals: { tournaments: upcoming_tournaments }
         %>
       </div>
     </div>
   <% end %>
 
-  <% if current_user.tournaments_played_in_or_hosted.any? %>
+  <% past_tournaments = Tournament.for_player_or_host(current_user).past.order(start_at: :desc) %>
+  <% if past_tournaments.any? %>
     <div class="panel panel-info">
       <div class="panel-heading">
         <h3 class="panel-title">Past Tournaments</h3>
       </div>
       <div class="panel-body">
         <%= render partial: "tournament_table",
-          locals: { tournaments: current_user.tournaments_played_in_or_hosted.sort { |a,b| b.start_at <=> a.start_at } }
+          locals: { tournaments: past_tournaments }
         %>
       </div>
     </div>

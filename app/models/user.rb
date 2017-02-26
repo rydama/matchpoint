@@ -8,12 +8,9 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
 
   def tournaments_not_playing_in
-    Tournament.current_and_upcoming.not_hosted_by(self)
+    Tournament.upcoming
+      .not_hosted_by(self)
       .where.not(id: [tournaments_playing_in.map(&:id)])
-  end
-
-  def tournaments_played_in_or_hosted
-    (tournaments_playing_in.past + tournaments_hosting.past).uniq
   end
 
   def registration_for(tournament)
