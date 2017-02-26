@@ -35,7 +35,7 @@
     </div>
   <% end %>
 
-  <% upcoming_tournaments = current_user.tournaments_not_playing_in.order(:start_at) %>
+  <% upcoming_tournaments = Tournament.upcoming.order(:start_at) %>
   <% if upcoming_tournaments.any? %>
     <div class="panel panel-info">
       <div class="panel-heading">

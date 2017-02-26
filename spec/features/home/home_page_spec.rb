@@ -15,10 +15,10 @@ feature "Home page" do
 
     visit home_path(as: user)
     expect(page).to have_content("Tournaments I'm Playing In")
+    expect(page).to have_content("Upcoming Tournaments")
     expect(page).to have_link(tournament.name)
 
     expect(page).to_not have_content("Tournaments I'm Hosting")
-    expect(page).to_not have_content("Upcoming Tournaments")
     expect(page).to_not have_content("Past Tournaments")
   end
 
@@ -27,10 +27,10 @@ feature "Home page" do
 
     visit home_path(as: user)
     expect(page).to have_content("Tournaments I'm Hosting")
+    expect(page).to have_content("Upcoming Tournaments")
     expect(page).to have_link(tournament.name)
 
     expect(page).to_not have_content("Tournaments I'm Playing In")
-    expect(page).to_not have_content("Upcoming Tournaments")
     expect(page).to_not have_content("Past Tournaments")
   end
 

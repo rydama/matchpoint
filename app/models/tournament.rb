@@ -13,7 +13,6 @@ class Tournament < ApplicationRecord
 
   scope :upcoming, -> { where("end_at >= ?", DateTime.now) }
   scope :past, -> { where("end_at < ?", DateTime.now) }
-  scope :not_hosted_by, -> (user) { where.not(owner: user) }
 
   scope :for_player_or_host, -> (user) {
     left_outer_joins(:registrations).where("registrations.user_id = ? OR owner_id = ?", user.id, user.id)
