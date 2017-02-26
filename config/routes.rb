@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get "/home", to: "tournaments#index"
 
   resources :tournaments
+  resources :registrations, only: [:create, :destroy]
 
   # Clearance user management
   resources :passwords, controller: "clearance/passwords", only: [:new, :create]

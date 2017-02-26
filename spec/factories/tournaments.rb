@@ -5,6 +5,6 @@ FactoryGirl.define do
     start_at { 2.days.from_now }
     end_at { 4.days.from_now }
 
-    association :owner
+    association :owner, factory: :user
   end
 end

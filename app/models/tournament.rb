@@ -1,5 +1,6 @@
 class Tournament < ApplicationRecord
   belongs_to :owner, class_name: "User"
+  has_many :registrations
 
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true
@@ -19,7 +20,7 @@ class Tournament < ApplicationRecord
   private
 
   def validate_date_order
-    unless start_at < end_at
+    if start_at && end_at && start_at >= end_at
       errors[:start_at] << "must be earlier than end date"
     end
   end

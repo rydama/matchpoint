@@ -1,9 +1,10 @@
 class User < ApplicationRecord
   include Clearance::User
 
-  validates :email, uniqueness: true
-
   has_many :tournaments, foreign_key: :owner_id
+  has_many :registrations
+
+  validates :email, uniqueness: true
 
   def tournaments_playing_in
     []
