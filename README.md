@@ -6,16 +6,16 @@ Matchpoint is a new project I've started in Feb 2017. It's a work in progress. H
 the high level features for the first, very simple, version. Checked features are tested and demoable
 in the dev environment (Matchpoint isn't deployed for production yet).
 
-- [ ] User management (with [Clearance](https://github.com/thoughtbot/clearance))
+- [x] User management (with [Clearance](https://github.com/thoughtbot/clearance))
 - [ ] Sign in/out
-- [ ] Basic Bootstrap styling
+- [x] Basic Bootstrap styling
 - [ ] Welcome page
 - [ ] Home page
 - [x] Tournament creation
 - [ ] Player registration
-- [ ] Matches page
+- [ ] Tournament matches page
 - [ ] Entering match results
-- [ ] Player ranking page
+- [ ] Tournament leaderboard
 
 ## Local Development
 

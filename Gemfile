@@ -48,6 +48,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rails-controller-testing'
   gem 'pry-byebug'
+  gem 'launchy'
 end
 
 group :development do
