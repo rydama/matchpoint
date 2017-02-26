@@ -1,4 +1,12 @@
 <div class="col-md-12">
+  <% if Tournament.count.zero? %>
+    <h4>
+      No tournaments have been created yet
+    </h4>
+
+    <%= link_to "Host a Tournament", new_tournament_path, class: "btn btn-md btn-primary top20"  %>
+  <% end %>
+
   <% if current_user.tournaments_playing_in.any? %>
     <div class="panel panel-primary">
       <div class="panel-heading">
@@ -13,7 +21,7 @@
   <% end %>
 
   <% if current_user.tournaments.current_and_upcoming.any? %>
-    <div class="panel panel-success">
+    <div class="panel panel-info">
       <div class="panel-heading">
         <h3 class="panel-title">Tournaments I'm Hosting</h3>
       </div>
@@ -26,7 +34,7 @@
   <% end %>
 
   <% if current_user.tournaments_not_playing_in.any? %>
-    <div class="panel panel-info">
+    <div class="panel panel-success">
       <div class="panel-heading">
         <h3 class="panel-title">Upcoming Tournaments</h3>
       </div>
