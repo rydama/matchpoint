@@ -7,7 +7,20 @@
     <%= @tournament.description %>
   </p>
 
-  <% if @tournament.owned_by(current_user) %>
-    <%= link_to "Change Tournament Details", edit_tournament_path, class: "btn btn-md btn-primary top20"  %>
+  <% if @tournament.registration_open? %>
+    <% registration = current_user.registration_for(@tournament) %>
+    <% if registration %>
+      <%= link_to "Unregister", registration_path(registration, redirect_to: tournament_path(@tournament)),
+        method: :delete, class: "btn btn-md btn-primary top20 right10"  %>
+    <% else %>
+      <%= link_to "Register", registrations_path(tournament_id: @tournament.id, redirect_to: tournament_path(@tournament)),
+        method: :post, class: "btn btn-md btn-primary top20 right10"  %>
+    <% end %>
+
+    <% if @tournament.owned_by(current_user) %>
+      <%= link_to "Change Tournament Details", edit_tournament_path, class: "btn btn-md btn-primary top20"  %>
+    <% end %>
+  <% else %>
+    <%# show results %>
   <% end %>
 </div>
