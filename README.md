@@ -11,7 +11,7 @@ in the dev environment (Matchpoint isn't deployed for production yet).
 - [ ] Basic Bootstrap styling
 - [ ] Welcome page
 - [ ] Home page
-- [ ] Tournament creation
+- [x] Tournament creation
 - [ ] Player registration
 - [ ] Matches page
 - [ ] Entering match results
