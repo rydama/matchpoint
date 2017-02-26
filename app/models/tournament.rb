@@ -1,7 +1,7 @@
 class Tournament < ApplicationRecord
   belongs_to :owner, class_name: "User"
   has_many :registrations
-  has_many :users, through: :registrations
+  has_many :players, through: :registrations, source: :user
 
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true
@@ -14,9 +14,9 @@ class Tournament < ApplicationRecord
   scope :current_and_upcoming, -> { where("end_at >= ?", DateTime.now) }
   scope :past, -> { where("end_at < ?", DateTime.now) }
   scope :with_registrations_for, -> (user) { joins(:registrations).where(registrations: { user: user }) }
-  scope :not_owned_by, -> (user) { where.not(owner: user) }
+  scope :not_hosted_by, -> (user) { where.not(owner: user) }
 
-  def owned_by?(user)
+  def hosted_by?(user)
     user == owner
   end
 

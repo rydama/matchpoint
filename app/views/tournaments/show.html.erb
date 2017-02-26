@@ -17,7 +17,7 @@
         method: :post, class: "btn btn-md btn-primary top20 right10"  %>
     <% end %>
 
-    <% if @tournament.owned_by?(current_user) %>
+    <% if @tournament.hosted_by?(current_user) %>
       <%= link_to "Change Tournament Details", edit_tournament_path, class: "btn btn-md btn-primary top20"  %>
     <% end %>
   <% else %>

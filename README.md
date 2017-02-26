@@ -29,7 +29,7 @@ in the dev environment (Matchpoint isn't deployed for production yet).
 
 ## To clean up
 
-- Use new hash syntax
+- add a gif to readme
 
 ## Not started yet
 

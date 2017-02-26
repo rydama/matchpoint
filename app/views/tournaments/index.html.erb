@@ -20,14 +20,14 @@
     </div>
   <% end %>
 
-  <% if current_user.tournaments.current_and_upcoming.any? %>
+  <% if current_user.tournaments_hosting.current_and_upcoming.any? %>
     <div class="panel panel-info">
       <div class="panel-heading">
         <h3 class="panel-title">Tournaments I'm Hosting</h3>
       </div>
       <div class="panel-body">
         <%= render partial: "tournament_table",
-          locals: { tournaments: current_user.tournaments.current_and_upcoming.order(:start_at) }
+          locals: { tournaments: current_user.tournaments_hosting.current_and_upcoming.order(:start_at) }
         %>
       </div>
     </div>
