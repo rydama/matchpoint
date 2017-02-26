@@ -33,3 +33,11 @@ in the dev environment (Matchpoint isn't deployed for production yet).
 ## Welcome page and sign in
 
 ![welcome](demo_videos/welcome.gif)
+
+## Registration
+
+![register](demo_videos/register.gif)
+
+## Create tournament
+
+![host](demo_videos/host.gif)
