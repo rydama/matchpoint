@@ -1,3 +1,3 @@
 ## Welcome page and sign in
 
-![welcome](welcome.gif)
+![welcome](welcome.gif?raw=true)
