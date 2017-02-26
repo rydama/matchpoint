@@ -3,10 +3,8 @@
 ## Anyone can host a tennis tournament
 
 Matchpoint is a new project I started in Feb 2017. It's a work in progress. Here's a list of
-the high level features for the first, very simple, version. Checked features are tested and demoable
+the high level features for the first, very simple, version. Checked features are tested and [demoable](#awesome-section)
 in the dev environment (Matchpoint isn't deployed for production yet).
-
-Check out the demo videos [here](demo_videos/README.md)
 
 - [x] User management (with [Clearance](https://github.com/thoughtbot/clearance))
 - [x] Sign in/out
@@ -28,3 +26,10 @@ Check out the demo videos [here](demo_videos/README.md)
 -  If you want to seed some sample data, `bin/rails db:seed`
 - `bin/rails s`
 - Visit http://localhost:3000
+
+
+# Demos
+
+## Welcome page and sign in
+
+![welcome](demo_videos/welcome.gif)
