@@ -7,14 +7,14 @@
     <%= link_to "Host a Tournament", new_tournament_path, class: "btn btn-md btn-primary top20"  %>
   <% end %>
 
-  <% if current_user.tournaments_playing_in.any? %>
+  <% if current_user.tournaments_playing_in.current_and_upcoming.any? %>
     <div class="panel panel-primary">
       <div class="panel-heading">
         <h3 class="panel-title">Tournaments I'm Playing In</h3>
       </div>
       <div class="panel-body">
         <%= render partial: "tournament_table",
-          locals: { tournaments: current_user.tournaments_playing_in.order(:start_at) }
+          locals: { tournaments: current_user.tournaments_playing_in.current_and_upcoming.order(:start_at) }
         %>
       </div>
     </div>
@@ -34,7 +34,7 @@
   <% end %>
 
   <% if current_user.tournaments_not_playing_in.any? %>
-    <div class="panel panel-success">
+    <div class="panel panel-info">
       <div class="panel-heading">
         <h3 class="panel-title">Upcoming Tournaments</h3>
       </div>
@@ -48,13 +48,13 @@
   <% end %>
 
   <% if current_user.tournaments_played_in_or_hosted.any? %>
-    <div class="panel panel-warning">
+    <div class="panel panel-info">
       <div class="panel-heading">
         <h3 class="panel-title">Past Tournaments</h3>
       </div>
       <div class="panel-body">
         <%= render partial: "tournament_table",
-          locals: { tournaments: current_user.tournaments_played_in_or_hosted.order(start_at: :desc) }
+          locals: { tournaments: current_user.tournaments_played_in_or_hosted.sort { |a,b| b.start_at <=> a.start_at } }
         %>
       </div>
     </div>
