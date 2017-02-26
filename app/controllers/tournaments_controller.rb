@@ -2,9 +2,6 @@ class TournamentsController < ApplicationController
   before_action :require_login
   before_action :load_tournament, except: [:index, :new, :create]
 
-  def index
-  end
-
   def new
     @tournament = Tournament.new
   end
