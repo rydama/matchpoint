@@ -1,6 +1,8 @@
 # Matchpoint
 
-Matchpoint is a new project I started in Feb 2017. It's a work in progress. Here's a list of
+Matchpoint is the world's simplest tennis tournament software.
+
+I started this project in Feb 2017. It's a work in progress. Here's a list of
 the high level features for the first, very simple, version. Checked features are tested and [demoable](#demos)
 in the dev environment (Matchpoint isn't deployed for production yet).
 
