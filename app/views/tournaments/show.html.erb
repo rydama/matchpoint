@@ -20,8 +20,11 @@
 
     <% if @tournament.hosted_by?(current_user) %>
       <%= link_to "Change Tournament Details", edit_tournament_path, class: "btn btn-md btn-primary top20 right10"  %>
-      <%= link_to "Generate Matches", generate_tournament_matches_path(@tournament),
-        method: :post, class: "btn btn-md btn-warning top20"  %>
+
+      <% if @tournament.ready_for_match_generation_by?(current_user) %>
+        <%= link_to match_generation_label(@tournament), generate_matches_tournament_path(@tournament),
+          method: :post, class: "btn btn-md btn-danger top20"  %>
+      <% end %>
     <% end %>
   <% else %>
     <p>
@@ -30,7 +33,7 @@
   <% end %>
 
   <% if @tournament.matches.any? %>
-    <h4>Matches</h4>
+    <h4 class="top40">Matches</h4>
     <%= render partial: "shared/matches_table", locals: { tournament: @tournament } %>
   <% end %>
 </div>

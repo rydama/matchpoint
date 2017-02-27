@@ -13,7 +13,7 @@ in the dev environment (Matchpoint isn't deployed for production yet).
 - [x] Home page
 - [x] Tournament creation
 - [x] Player registration
-- [ ] Tournament matches page
+- [x] Generating matches 
 - [ ] Entering match results
 - [ ] Tournament leaderboard
 
@@ -41,3 +41,7 @@ in the dev environment (Matchpoint isn't deployed for production yet).
 ## Create tournament
 
 ![host](demo_videos/host.gif)
+
+## Generate matches
+
+![generate](demo_videos/generate.gif)

@@ -28,6 +28,15 @@ class TournamentsController < ApplicationController
     end
   end
 
+  def generate_matches
+    if MatchGeneratorService.new.generate_for(@tournament)
+      flash[:notice] = "Matches generated successfully."
+    else
+      flash[:alert] = "There was a problem generating matches."
+    end
+    redirect_to tournament_path(@tournament)
+  end
+
   private
 
   def load_tournament

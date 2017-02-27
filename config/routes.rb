@@ -3,10 +3,8 @@ Rails.application.routes.draw do
   get "/home", to: "tournaments#index"
 
   resources :tournaments do
-    resources :matches do
-      collection do
-        post :generate
-      end
+    member do
+      post :generate_matches
     end
   end
 

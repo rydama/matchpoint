@@ -1,3 +1,4 @@
+ryanm remove?
 <div class="col-md-9">
   <h4>
   Matches for <%= link_to @tournament.name, tournament_path(@tournament) %>
@@ -6,11 +7,16 @@
   <% if @tournament.matches.empty? %>
     <p>Matches haven't been generated yet for this tournament.</p>
 
-    <% if @tournament.hosted_by?(current_user) %>
-      <%= link_to "Generate Matches", generate_tournament_matches_path(@tournament),
+    <% if @tournament.ready_for_match_generation_by?(current_user) %>
+      <%= link_to match_generation_label(@tournament), generate_tournament_matches_path(@tournament),
         class: "btn btn-md btn-warning top20"  %>
     <% end %>
   <% else %>
     <%= render partial: "shared/matches_table", locals: { tournament: @tournament } %>
+
+    <% if @tournament.ready_for_match_generation_by?(current_user) %>
+      <%= link_to match_generation_label(@tournament), generate_tournament_matches_path(@tournament),
+        class: "btn btn-md btn-warning top20"  %>
+    <% end %>
   <% end %>
 </div>

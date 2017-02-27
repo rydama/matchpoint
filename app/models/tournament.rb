@@ -27,6 +27,10 @@ class Tournament < ApplicationRecord
     start_at >= DateTime.now
   end
 
+  def ready_for_match_generation_by?(user)
+    hosted_by?(user) && players.count > 1
+  end
+
   private
 
   def validate_date_order

@@ -8,11 +8,11 @@
   </thead>
 
   <tbody>
-    <% @matches.each do |match| %>
+    <% tournament.matches.each do |match| %>
       <tr>
         <td><%= match.home_player.email %></td>
-        <td><%= match.away_player.email %></td>
-        <td><%= match.start_at.strftime('%B %d %Y, %l:%M %P') %></td>
+        <td><%= match.away_player.try(:email) || "BYE" %></td>
+        <td><%= match.start_at.strftime('%B %d %Y, %l:%M %P') if match.away_player %></td>
       </tr>
     <% end %>
   </tbody>
