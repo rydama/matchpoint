@@ -1,0 +1,9 @@
+<% registration = current_user.registration_for(tournament) %>
+<% if registration %>
+  <%= link_to "Unregister", registration_path(registration, redirect_to: tournament_path(tournament)),
+      method: :delete, class: "btn btn-md btn-warning top20 right10"  %>
+<% else %>
+  <%= link_to "Register", registrations_path(tournament_id: tournament.id,
+      redirect_to: tournament_path(tournament)),
+      method: :post, class: "btn btn-md btn-primary top20 right10"  %>
+<% end %>
