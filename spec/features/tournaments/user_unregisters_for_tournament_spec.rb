@@ -6,7 +6,7 @@ feature "User unregisters for a tournament" do
   let(:tournament) { create(:tournament, owner: create(:user)) }
 
   scenario "that they had previously registered for" do
-    create(:registration, user: user, tournament: tournament)
+    create(:registration, player: user, tournament: tournament)
     visit tournament_path(tournament, as: user)
 
     click_link "Unregister"

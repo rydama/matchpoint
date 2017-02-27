@@ -11,7 +11,7 @@ feature "Home page" do
   end
 
   scenario "shows registered tournaments" do
-    create(:registration, user: user, tournament: tournament)
+    create(:registration, player: user, tournament: tournament)
 
     visit home_path(as: user)
     expect(page).to have_content("Tournaments I'm Playing In")
@@ -60,7 +60,7 @@ feature "Home page" do
 
   scenario "shows past tournaments for a player" do
     past_tournament = create(:tournament, start_at: 3.days.ago, end_at: 2.days.ago)
-    create(:registration, user: user, tournament: past_tournament)
+    create(:registration, player: user, tournament: past_tournament)
 
     visit home_path(as: user)
     expect(page).to have_content("Past Tournaments")

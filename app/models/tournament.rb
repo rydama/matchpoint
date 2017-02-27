@@ -1,7 +1,7 @@
 class Tournament < ApplicationRecord
   belongs_to :owner, class_name: "User"
   has_many :registrations
-  has_many :players, through: :registrations, source: :user
+  has_many :players, through: :registrations, source: :player
   has_many :matches
 
   validates :name, presence: true, uniqueness: true
@@ -16,7 +16,7 @@ class Tournament < ApplicationRecord
   scope :past, -> { where("end_at < ?", DateTime.now) }
 
   scope :for_player_or_host, -> (user) {
-    left_outer_joins(:registrations).where("registrations.user_id = ? OR owner_id = ?", user.id, user.id)
+    left_outer_joins(:registrations).where("registrations.player_id = ? OR owner_id = ?", user.id, user.id)
   }
 
   def hosted_by?(user)

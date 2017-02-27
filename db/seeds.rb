@@ -21,5 +21,5 @@ end
 
 # Register all the users for the first tournament.
 users.each do |user|
-  Registration.create!(user: user, tournament: tournaments.first)
+  Registration.create!(player: user, tournament: tournaments.first)
 end

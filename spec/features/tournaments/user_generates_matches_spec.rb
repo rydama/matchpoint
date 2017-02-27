@@ -9,15 +9,15 @@ feature "User generates matches" do
   let(:tournament) { create(:tournament, owner: user) }
 
   scenario "with less then 2 players registered" do
-    create(:registration, user: player1, tournament: tournament)
+    create(:registration, player: player1, tournament: tournament)
     visit tournament_path(tournament, as: user)
 
     expect(page).to_not have_link("Generate Matches")
   end
 
   scenario "with 2 players registered" do
-    create(:registration, user: player1, tournament: tournament)
-    create(:registration, user: player2, tournament: tournament)
+    create(:registration, player: player1, tournament: tournament)
+    create(:registration, player: player2, tournament: tournament)
     visit tournament_path(tournament, as: user)
 
     click_link "Generate Matches"
@@ -27,9 +27,9 @@ feature "User generates matches" do
   end
 
   scenario "with 3 players registered" do
-    create(:registration, user: player1, tournament: tournament)
-    create(:registration, user: player2, tournament: tournament)
-    create(:registration, user: player3, tournament: tournament)
+    create(:registration, player: player1, tournament: tournament)
+    create(:registration, player: player2, tournament: tournament)
+    create(:registration, player: player3, tournament: tournament)
     visit tournament_path(tournament, as: user)
 
     click_link "Generate Matches"

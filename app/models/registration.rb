@@ -1,7 +1,7 @@
 class Registration < ApplicationRecord
-  belongs_to :user
+  belongs_to :player, class_name: "User"
   belongs_to :tournament
 
-  validates :user, presence: true
+  validates :player, presence: true
   validates :tournament, presence: true
 end

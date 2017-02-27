@@ -4,7 +4,7 @@ class RegistrationsController < ApplicationController
   def create
     tournament = Tournament.find(params[:tournament_id])
     registration = Registration.new(tournament: tournament)
-    registration.user = current_user
+    registration.player = current_user
     registration.save!
     redirect_to redirect_path
   end
