@@ -2,37 +2,42 @@ require "rails_helper"
 require "support/features/clearance_helpers"
 
 feature "User generates matches" do
-  scenario "the first time" do
-    visit new_tournament_path(as: create(:user))
-    fill_in "tournament_name", with: "Portland Classic"
-    fill_in "tournament_description", with: "Fun in Portland"
-    fill_in "tournament_start_at", with: "03/10/2017 10:00 AM"
-    fill_in "tournament_end_at", with: "03/11/2017 10:00 AM"
+  let(:user) { create(:user) }
+  let(:player1) { create(:user) }
+  let(:player2) { create(:user) }
+  let(:player3) { create(:user) }
+  let(:tournament) { create(:tournament, owner: user) }
 
-    click_button "Create Tournament"
-    expect(page).to have_content("Your tournament was created")
-    expect(page).to have_content("Portland Classic")
+  scenario "with less then 2 players registered" do
+    create(:registration, user: player1, tournament: tournament)
+    visit tournament_path(tournament, as: user)
+
+    expect(page).to_not have_link("Generate Matches")
   end
 
-  scenario "the second time" do
-    visit new_tournament_path(as: create(:user))
-    fill_in "tournament_name", with: "Portland Classic"
-    fill_in "tournament_description", with: "Fun in Portland"
-    fill_in "tournament_start_at", with: "03/10/2017 10:00 AM"
-    fill_in "tournament_end_at", with: "not a date"
+  scenario "with 2 players registered" do
+    create(:registration, user: player1, tournament: tournament)
+    create(:registration, user: player2, tournament: tournament)
+    visit tournament_path(tournament, as: user)
 
-    click_button "Create Tournament"
-    expect(page).to have_content("There was a problem saving the tournament")
+    click_link "Generate Matches"
+    expect(page).to have_content(player1.email)
+    expect(page).to have_content(player2.email)
+    expect(page).to have_content("Regenerate Matches")
+    expect(page).to_not have_content("BYE")
   end
 
-  scenario "with an odd number of players" do
-    visit new_tournament_path(as: create(:user))
-    fill_in "tournament_name", with: "Portland Classic"
-    fill_in "tournament_description", with: "Fun in Portland"
-    fill_in "tournament_start_at", with: "03/10/2017 10:00 AM"
-    fill_in "tournament_end_at", with: "not a date"
+  scenario "with 3 players registered" do
+    create(:registration, user: player1, tournament: tournament)
+    create(:registration, user: player2, tournament: tournament)
+    create(:registration, user: player3, tournament: tournament)
+    visit tournament_path(tournament, as: user)
 
-    click_button "Create Tournament"
-    expect(page).to have_content("There was a problem saving the tournament")
+    click_link "Generate Matches"
+    expect(page).to have_content(player1.email)
+    expect(page).to have_content(player2.email)
+    expect(page).to have_content(player3.email)
+    expect(page).to have_content("Regenerate Matches")
+    expect(page).to have_content("BYE")
   end
 end
