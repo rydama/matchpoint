@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: "welcome#index"
   get "/home", to: "tournaments#index"
 
-  resources :tournaments do
+  resources :tournaments, except: :destroy do
     member do
       post :generate_matches
     end
