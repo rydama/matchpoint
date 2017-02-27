@@ -8,23 +8,10 @@
   </p>
 
   <% if @tournament.registration_open? %>
-    <% registration = current_user.registration_for(@tournament) %>
-    <% if registration %>
-      <%= link_to "Unregister", registration_path(registration, redirect_to: tournament_path(@tournament)),
-        method: :delete, class: "btn btn-md btn-warning top20 right10"  %>
-    <% else %>
-      <%= link_to "Register", registrations_path(tournament_id: @tournament.id,
-          redirect_to: tournament_path(@tournament)),
-          method: :post, class: "btn btn-md btn-primary top20 right10"  %>
-    <% end %>
+    <%= render partial: "registration_controls", locals: { tournament: @tournament } %>
 
     <% if @tournament.hosted_by?(current_user) %>
-      <%= link_to "Change Tournament Details", edit_tournament_path, class: "btn btn-md btn-primary top20 right10"  %>
-
-      <% if @tournament.ready_for_match_generation_by?(current_user) %>
-        <%= link_to match_generation_label(@tournament), generate_matches_tournament_path(@tournament),
-          method: :post, class: "btn btn-md btn-danger top20"  %>
-      <% end %>
+      <%= render partial: "host_controls", locals: { tournament: @tournament } %>
     <% end %>
   <% else %>
     <p>
