@@ -76,7 +76,7 @@ describe MatchGeneratorService do
         expect(tournament).to receive_message_chain("matches.destroy_all")
       end
 
-      it "creates 3 matches" do
+      it "creates 6 matches" do
         expect(matches.count).to eq 6
       end
 
