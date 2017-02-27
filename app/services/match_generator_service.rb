@@ -16,7 +16,8 @@ class MatchGeneratorService
       tournament.matches.destroy_all
 
       while home_player
-        match = tournament.matches.new(
+        match = Match.new(
+          tournament: tournament,
           home_player: home_player,
           away_player: away_player,
           start_at: start_at)
