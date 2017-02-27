@@ -34,6 +34,6 @@
 
   <% if @tournament.matches.any? %>
     <h4 class="top40">Matches</h4>
-    <%= render partial: "shared/matches_table", locals: { tournament: @tournament } %>
+    <%= render partial: "matches_table", locals: { tournament: @tournament } %>
   <% end %>
 </div>

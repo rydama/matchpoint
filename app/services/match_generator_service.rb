@@ -1,4 +1,8 @@
+# A service that generates matches for a tournament.
 class MatchGeneratorService
+  # Generate (and save model objects for) matches for the given tournament.
+  # If there are existing matches for the tournament, they will be deleted.
+  # Return the matches if successful, otherwise nil. 
   def generate_for(tournament)
     return [] unless tournament.players.any?
 
