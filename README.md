@@ -13,7 +13,7 @@ in the dev environment (Matchpoint isn't deployed for production yet).
 - [x] Home page
 - [x] Tournament creation
 - [x] Player registration
-- [x] Generating matches 
+- [x] Generating round-robin matches 
 - [ ] Entering match results
 - [ ] Tournament leaderboard
 
