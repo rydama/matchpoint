@@ -24,7 +24,6 @@ feature "User generates matches" do
     expect(page).to have_content(player1.email)
     expect(page).to have_content(player2.email)
     expect(page).to have_content("Regenerate Matches")
-    expect(page).to_not have_content("BYE")
   end
 
   scenario "with 3 players registered" do
@@ -38,6 +37,5 @@ feature "User generates matches" do
     expect(page).to have_content(player2.email)
     expect(page).to have_content(player3.email)
     expect(page).to have_content("Regenerate Matches")
-    expect(page).to have_content("BYE")
   end
 end
