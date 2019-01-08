@@ -20,7 +20,7 @@ in the dev environment (Matchpoint isn't deployed for production yet).
 ## Local Development
 
 - You'll need at least Ruby 2.2.3
-- Matchpoint is built with Rails 5.0.1
+- Matchpoint is built with Rails 5.2.2
 - `git clone git@github.com:rydama/matchpoint.git matchpoint`
 - `bundle install`
 - `bin/rspec`

@@ -5,11 +5,11 @@ source 'https://rubygems.org'
 
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.43'
 gem 'clearance' # User/password management
-gem 'coffee-rails', '~> 4.2'
+gem 'coffee-rails', '~> 4.2.2'
 gem 'jquery-rails'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'puma', '~> 3.0'
-gem 'rails', '~> 5.0.1'
+gem 'rails', '~> 5.2.2'
 gem 'sass-rails', '~> 5.0'
 gem 'sqlite3'
 gem 'turbolinks', '~> 5'
